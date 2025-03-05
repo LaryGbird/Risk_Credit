@@ -10,8 +10,15 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import joblib
 import streamlit as st
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(BASE_DIR, "credit_risk_dataset.csv")
+
+df = pd.read_csv(file_path, sep=';')
+
 # 1. Chargement du dataset
-df = pd.read_csv('credit_risk_dataset.csv', sep=';')
+#df = pd.read_csv('credit_risk_dataset.csv', sep=';')
 
 # 2. Exploration des données
 print("Aperçu des données :")
