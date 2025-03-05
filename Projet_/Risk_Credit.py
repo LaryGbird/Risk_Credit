@@ -12,6 +12,54 @@ import streamlit as st
 
 import os
 
+# Appliquer un style CSS personnalisé
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f5f7fa;
+    }
+    .stApp {
+        background-color: #f5f7fa;
+    }
+    .main-title {
+        font-size: 40px;  /* Augmenter la taille du texte */
+        font-weight: bold;
+        color: #1f77b4;  /* Garder la couleur bleue */
+        text-align: center;
+    }
+    .subtitle {
+        font-size: 20px;
+        color: #ff6600;
+        text-align: center;
+    }
+    .stButton>button {
+        background-color: #1f77b4;
+        color: yellow;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        padding: 10px;
+    }
+    .stButton>button:hover {
+        background-color: #ff6600;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown('<p class="main-title">Modèle de Prédiction du Risque de Crédit</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">Analyse et prévisions basées sur le Machine Learning</p>', unsafe_allow_html=True)
+st.markdown("🚀 **Bienvenue sur l'outil de prédiction du risque de crédit !**")
+
+st.sidebar.title("🔍 Navigation")
+st.sidebar.markdown("📌 **Options** :")
+st.sidebar.button("🏠 Accueil")
+st.sidebar.button("📊 Analyse des données")
+st.sidebar.button("📈 Prédictions")
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(BASE_DIR, "credit_risk_dataset.csv")
 
@@ -90,7 +138,7 @@ joblib.dump(dt_model, 'best_model.joblib')
 joblib.dump(scaler, 'scaler.joblib')
 
 # 6. Interface Streamlit
-st.title("Prédiction du Risque de Crédit")
+#st.title("Prédiction du Risque de Crédit")
 
 # Charger le modèle
 model = joblib.load('best_model.joblib')
@@ -112,3 +160,11 @@ for col in X.columns:
 if st.button("Prédire"):
     result = predict_risk(input_data)
     st.write(f"Résultat : {result}")
+
+# import streamlit as st
+
+
+
+# Lien de l'application: https://risckcredit.streamlit.app/
+
+
